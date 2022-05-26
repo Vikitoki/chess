@@ -1,5 +1,5 @@
-import { CellModel } from '../CellModel';
-import { Colors } from '../../types/colors';
+import { CellModel } from '../cell-model';
+import { Colors } from '../../types/models';
 
 export class BoardModel {
   cells: CellModel[][] = [];

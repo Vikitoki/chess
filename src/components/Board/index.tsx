@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './style.css';
 import { Cell } from '../Cell';
-import { BoardModel } from '../../models/BoardModel';
+import { BoardModel } from '../../models/board-model';
 
 type TBoardProps = {
   board: BoardModel;

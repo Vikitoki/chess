@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BoardModel } from '../../models/BoardModel';
+import { BoardModel } from '../../models/board-model';
 import './style.css';
 
 import { Board } from '../Board';

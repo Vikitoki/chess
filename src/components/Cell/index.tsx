@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import './style.css';
-import { Colors } from '../../types/colors';
+import { Colors } from '../../types/models';
 
 type TCellProps = {
   color: Colors;
