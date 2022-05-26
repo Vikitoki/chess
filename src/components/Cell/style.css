@@ -1,0 +1,25 @@
+.cell {
+  width: 84px;
+  height: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell img {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.cell_black {
+  background-color: darkolivegreen;
+}
+
+.cell_white {
+  background-color: #edd3be;
+}
+
+.cell_selected {
+  box-shadow: 5px 5px 31px 16px rgba(0, 0, 0, 0.25);
+}
