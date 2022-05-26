@@ -5,8 +5,8 @@ export class CellModel {
   readonly color: Colors;
   readonly x: number;
   readonly y: number;
-  readonly figure: FigureModel | null;
-  readonly availableToMove: boolean;
+  availableToMove: boolean;
+  figure: FigureModel | null;
 
   constructor(
     color: Colors,

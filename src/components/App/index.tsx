@@ -10,6 +10,7 @@ function App() {
   useEffect(() => {
     const newBoard = new BoardModel();
     newBoard.createCells();
+    newBoard.addFigures();
     setBoard(newBoard);
   }, []);
 

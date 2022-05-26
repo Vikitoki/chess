@@ -1,7 +1,7 @@
 import { FigureModel } from './index';
 import { Colors, FigureNames } from '../../types/models';
-import whiteLogo from '/public/figures/white-knight.png';
-import blackLogo from '/public/figures/black-knight.png';
+import whiteLogo from '../../assets/figures/white-knight.png';
+import blackLogo from '../../assets/figures/black-knight.png';
 
 export class Knight extends FigureModel {
   constructor(color: Colors) {

@@ -1,7 +1,7 @@
 import { FigureModel } from './index';
 import { Colors, FigureNames } from '../../types/models';
-import whiteLogo from '/public/figures/white-king.png';
-import blackLogo from '/public/figures/black-king.png';
+import whiteLogo from '../../assets/figures/white-king.png';
+import blackLogo from '../../assets/figures/black-king.png';
 
 export class King extends FigureModel {
   constructor(color: Colors) {

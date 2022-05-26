@@ -13,7 +13,7 @@ export const Board: FC<TBoardProps> = ({ board }) => {
       {board.cells.map((row, index) => (
         <React.Fragment key={index}>
           {row.map((cell, index) => (
-            <Cell color={cell.color} key={index} />
+            <Cell cell={cell} key={index} />
           ))}
         </React.Fragment>
       ))}

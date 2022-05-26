@@ -1,7 +1,7 @@
 import { FigureModel } from './index';
 import { Colors, FigureNames } from '../../types/models';
-import whiteLogo from '/public/figures/white-bishop.png';
-import blackLogo from '/public/figures/black-bishop.png';
+import whiteLogo from '../../assets/figures/white-bishop.png';
+import blackLogo from '../../assets/figures/black-bishop.png';
 
 export class Bishop extends FigureModel {
   constructor(color: Colors) {
