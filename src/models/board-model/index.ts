@@ -1,23 +1,18 @@
 import { CellModel } from '../cell-model';
 import { Colors } from '../../types/models';
-import { FigureModel } from '../figures';
-import { Pawn } from '../figures/pawn';
 import { BOARD_NUMBER_OF_CELLS } from '../../constants/models';
-import { Knight } from '../figures/knight';
-import { Rook } from '../figures/rook';
-import { Bishop } from '../figures/bishop';
 import { Queen } from '../figures/queen';
+import { Rook } from '../figures/rook';
+import { Knight } from '../figures/knight';
+import { Bishop } from '../figures/bishop';
 import { King } from '../figures/king';
+import { Pawn } from '../figures/pawn';
 
 export class BoardModel {
   cells: CellModel[][] = [];
 
   private isCellBlack(x: number, y: number): boolean {
     return (x + y) % 2 !== 0;
-  }
-
-  private isFigureBlack(y: number): boolean {
-    return y === 1 || y === 0;
   }
 
   createCells(): void {
@@ -36,48 +31,54 @@ export class BoardModel {
     }
   }
 
-  private getFigureToCell(x: number, y: number): FigureModel | null {
-    const colorOfFigure = this.isFigureBlack(y)
-      ? Colors.BLACK
-      : Colors.WHITE;
-    const isTheLastRowsOfTheBoard = y === 0 || y === 7;
-    const thePrenoonRowsOfTheBoard = y === 1 || y === 6;
+  public getCell(x: number, y: number): CellModel {
+    return this.cells[y][x];
+  }
 
-    if (thePrenoonRowsOfTheBoard) {
-      return new Pawn(colorOfFigure);
+  private addPawns() {
+    for (let i = 0; i < 8; i++) {
+      new Pawn(Colors.BLACK, this.getCell(i, 1));
+      new Pawn(Colors.WHITE, this.getCell(i, 6));
     }
+  }
 
-    if (isTheLastRowsOfTheBoard) {
-      switch (x) {
-        case 1:
-        case 6:
-          return new Knight(colorOfFigure);
-        case 0:
-        case 7:
-          return new Rook(colorOfFigure);
-        case 2:
-        case 5:
-          return new Bishop(colorOfFigure);
-        case 3:
-          return new Queen(colorOfFigure);
-        case 4:
-          return new King(colorOfFigure);
-      }
-    }
+  private addKings() {
+    new King(Colors.BLACK, this.getCell(4, 0));
+    new King(Colors.WHITE, this.getCell(4, 7));
+  }
 
-    return null;
+  private addQueens() {
+    new Queen(Colors.BLACK, this.getCell(3, 0));
+    new Queen(Colors.WHITE, this.getCell(3, 7));
+  }
+
+  private addBishops() {
+    new Bishop(Colors.BLACK, this.getCell(2, 0));
+    new Bishop(Colors.BLACK, this.getCell(5, 0));
+    new Bishop(Colors.WHITE, this.getCell(2, 7));
+    new Bishop(Colors.WHITE, this.getCell(5, 7));
+  }
+
+  private addKnights() {
+    new Knight(Colors.BLACK, this.getCell(1, 0));
+    new Knight(Colors.BLACK, this.getCell(6, 0));
+    new Knight(Colors.WHITE, this.getCell(1, 7));
+    new Knight(Colors.WHITE, this.getCell(6, 7));
+  }
+
+  private addRooks() {
+    new Rook(Colors.BLACK, this.getCell(0, 0));
+    new Rook(Colors.BLACK, this.getCell(7, 0));
+    new Rook(Colors.WHITE, this.getCell(0, 7));
+    new Rook(Colors.WHITE, this.getCell(7, 7));
   }
 
   addFigures(): void {
-    for (let y = 0; y < 8; y++) {
-      const row = this.cells[y];
-
-      for (let x = 0; x < 8; x++) {
-        const cell = row[x];
-        const figure = this.getFigureToCell(cell.x, cell.y);
-
-        cell.figure = figure;
-      }
-    }
+    this.addPawns();
+    this.addKnights();
+    this.addKings();
+    this.addBishops();
+    this.addQueens();
+    this.addRooks();
   }
 }
